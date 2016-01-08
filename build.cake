@@ -1,9 +1,5 @@
 #addin "Cake.Xamarin"
 
-#addin "Cake.ReSharperReports"
-#tool "JetBrains.ReSharper.CommandLineTools"
-#tool "ReSharperReports"
-
 // ARGUMENTS
 var target = Argument("target", "default");
 var configuration = Argument("configuration", "release");
@@ -12,6 +8,7 @@ var configuration = Argument("configuration", "release");
 var sln = "Cake.HockeyApp.sln";
 var report = Directory("./reports");
 var output = Directory("./output");
+var src = "./src/*";
 
 // TASKS
 Task("clean")
@@ -22,17 +19,10 @@ Task("clean")
     });
 
 Task("restore")
-    .Does(() => NuGetRestore(sln));
+    .Does(() => DNURestore(src));
 
 Task("build")
-    .Does(() =>
-    {
-        if(IsRunningOnWindows())
-            MSBuild(sln, cfg => cfg.Configuration = configuration);
-        else
-        // xbuild is crap we need to use the xamarin tool chain
-            MDToolBuild(sln, cfg => cfg.Configuration = configuration);
-    });
+    .Does(() => DNUBuild(src));
     
 Task("rebuild")
     .IsDependentOn("clean")
@@ -41,6 +31,13 @@ Task("rebuild")
 // default target is build
 Task("default")
     .IsDependentOn("build");
+    
+Task("pack")
+    .Does(() => DNUPack(src, new DNUPackSettings 
+    { 
+        OutputDirectory = "./output/artifacts", 
+        Configurations = new [] {configuration}
+    }));
 
 // EXECUTION
 RunTarget(target);
