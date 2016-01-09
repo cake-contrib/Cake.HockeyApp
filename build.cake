@@ -102,6 +102,10 @@ Task("pack")
 // default target is build
 Task("default")
     .IsDependentOn("build");
-    
+
+Task("appveyor")
+    .IsDependentOn("clean");
+    .IsDependentOn("build");
+
 // EXECUTION
 RunTarget(target);
