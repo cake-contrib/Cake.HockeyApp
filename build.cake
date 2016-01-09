@@ -99,6 +99,7 @@ Task("pack")
             Files                   = new [] 
             {
                 new NuSpecContent {Source = "Cake.HockeyApp.dll", Target = "net45"},
+                new NuSpecContent {Source = "Cake.HockeyApp.xml", Target = "net45"},
                 new NuSpecContent {Source = "Newtonsoft.Json.dll", Target = "net45"},
                 new NuSpecContent {Source = "RestSharp.dll", Target = "net45"},
             },
