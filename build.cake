@@ -62,10 +62,6 @@ Task("rebuild")
     .IsDependentOn("clean")
     .IsDependentOn("build");
 
-// default target is build
-Task("default")
-    .IsDependentOn("build");
-
 Task("pack")
     .IsDependentOn("clean")
     .IsDependentOn("build")
@@ -85,7 +81,7 @@ Task("pack")
             Summary                 = "The HockeyApp Addin for Cake allows you to deploy you app package to HockeyApp",
             ProjectUrl              = new Uri("https://github.com/reicheltp/Cake.HockeyApp"),
           //  IconUrl                 = new Uri("http://cdn.rawgit.com/SomeUser/TestNuget/master/icons/testnuget.png"),
-          //  LicenseUrl              = new Uri("https://github.com/SomeUser/TestNuget/blob/master/LICENSE.md"),
+            LicenseUrl              = new Uri("https://github.com/reicheltp/Cake.HockeyApp/blob/master/LICENSE.md"),
             Copyright               = copyright,
           //  ReleaseNotes            = new [] {"Bug fixes", "Issue fixes", "Typos"},
             Tags                    = new [] {"Cake", "Script", "Build", "HockeyApp", "Deploment" },
@@ -103,5 +99,9 @@ Task("pack")
          });
     });
 
+// default target is build
+Task("default")
+    .IsDependentOn("build");
+    
 // EXECUTION
 RunTarget(target);
