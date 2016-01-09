@@ -22,6 +22,7 @@ var buildNumber = AppVeyor.Environment.Build.Number;
 var version = releaseNotes.Version.ToString();
 var semVersion = local ? version : (version + string.Concat("-build-", buildNumber));
 
+var prerelease = false;
 
 Setup(() => 
 {
@@ -80,7 +81,7 @@ Task("pack")
         NuGetPack(new NuGetPackSettings 
         {
             Id                      = projectTitle,
-            Version                 = semVersion,
+            Version                 = prerelease ? semVersion : version,
             Title                   = projectTitle,
             Authors                 = new[] { authors },
             Owners                  = new[] { owner },
@@ -122,7 +123,11 @@ Task("appveyor")
         var branch = AppVeyor.Environment.Repository.Branch;
     
         if(branch == "master" || branch == "develop")
+        {
+            prerelease = branch == "master";
+                
             RunTarget("pack");
+        }
     });
 
 // EXECUTION
