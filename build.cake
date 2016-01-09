@@ -22,6 +22,13 @@ var buildNumber = AppVeyor.Environment.Build.Number;
 var version = releaseNotes.Version.ToString();
 var semVersion = local ? version : (version + string.Concat("-build-", buildNumber));
 
+var git = GitVersion();
+
+Setup(() => 
+{
+    Information(string.Format("Building {0} Version: {1} on branch {2}", projectTitle, semVersion, git.BranchName));
+});
+
 // TASKS
 Task("clean")
     .Does(() =>
