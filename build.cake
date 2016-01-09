@@ -22,11 +22,13 @@ var buildNumber = AppVeyor.Environment.Build.Number;
 var version = releaseNotes.Version.ToString();
 var semVersion = local ? version : (version + string.Concat("-build-", buildNumber));
 
-var git = GitVersion();
 
 Setup(() => 
 {
-    Information(string.Format("Building {0} Version: {1} on branch {2}", projectTitle, semVersion, git.BranchName));
+    if(!local)
+        Information(string.Format("Building {0} Version: {1} on branch {2}", projectTitle, semVersion, AppVeyor.Environment.Repository.Branch));
+    else 
+        Information(string.Format("Building {0} Version: {1}", projectTitle, semVersion));
 });
 
 // TASKS
@@ -70,8 +72,6 @@ Task("rebuild")
     .IsDependentOn("build");
 
 Task("pack")
-    .IsDependentOn("clean")
-    .IsDependentOn("build")
     .Does(() => 
     {
         var artifacts = output + Directory("artifacts");
@@ -111,8 +111,19 @@ Task("default")
     .IsDependentOn("build");
 
 Task("appveyor")
-    .IsDependentOn("clean")
-    .IsDependentOn("build");
+    .Does(() => 
+    {
+        if(local)
+            throw new Exception("This target should only run from AppVoyer");
+    
+        RunTarget("clean");
+        RunTarget("build");
+    
+        var branch = AppVeyor.Environment.Repository.Branch;
+    
+        if(branch == "master" || branch == "develop")
+            RunTarget("pack");
+    });
 
 // EXECUTION
 RunTarget(target);
