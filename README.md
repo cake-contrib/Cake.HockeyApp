@@ -1,4 +1,7 @@
-# Cake.HockeyApp Addin
+# Cake.HockeyApp Addin 
+
+![AppVeyor master branch](https://img.shields.io/appveyor/ci/reicheltp/cake-hockeyapp.svg)
+![nuget pre release](https://img.shields.io/nuget/vpre/Cake.HockeyApp.svg)
 
 This Addin for the Cake Build Automation System allows you to deploy your package to HockeyApp. More about Cake at http://cakebuild.net
 
