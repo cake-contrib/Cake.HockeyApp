@@ -104,7 +104,7 @@ Task("default")
     .IsDependentOn("build");
 
 Task("appveyor")
-    .IsDependentOn("clean");
+    .IsDependentOn("clean")
     .IsDependentOn("build");
 
 // EXECUTION
