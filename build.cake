@@ -124,7 +124,7 @@ Task("appveyor")
     
         if(branch == "master" || branch == "develop")
         {
-            prerelease = branch == "master";
+            prerelease = branch != "master";
                 
             RunTarget("pack");
         }
