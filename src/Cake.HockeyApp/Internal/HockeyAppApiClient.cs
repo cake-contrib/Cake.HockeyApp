@@ -31,8 +31,10 @@ namespace Cake.HockeyApp.Internal
             return response.Data;
         }
 
-        public HockeyAppResponse UploadFileAsync(string apiToken, string appId, string version, string notes, string notesType, string status,
-            string notify, string tags, string teams, string users, string mandatory, string commitSha, string buildServerUrl,
+        public HockeyAppResponse UploadFileAsync(string apiToken, string appId, string version, string notes,
+            string notesType, string status,
+            string notify, string tags, string teams, string users, string mandatory, string commitSha,
+            string buildServerUrl,
             string repositoryUrl, string filePath)
         {
             var request = new RestRequest($"/api/2/apps/{appId}/app_versions/{version}");
@@ -41,19 +43,20 @@ namespace Cake.HockeyApp.Internal
 
             request.AlwaysMultipartFormData = true;
 
-            if (notes != null) request.AddParameter("notes", notes);
-            if (notesType != null) request.AddParameter("notes_type", notesType);
-            if (status != null) request.AddParameter("status", status);
-            if (notify != null) request.AddParameter("notify", notify);
-            if (tags != null) request.AddParameter("tags", tags);
-            if (teams != null) request.AddParameter("teams", teams);
-            if (users != null) request.AddParameter("users", users);
-            if (mandatory != null) request.AddParameter("mandatory", mandatory);
-            if (commitSha != null) request.AddParameter("commit_sha", commitSha);
-            if (buildServerUrl != null) request.AddParameter("build_server_url", buildServerUrl);
-            if (repositoryUrl != null) request.AddParameter("repository_url", repositoryUrl);
+            if (!string.IsNullOrEmpty(notes)) request.AddParameter("notes", notes);
+            if (!string.IsNullOrEmpty(notesType)) request.AddParameter("notes_type", notesType);
+            if (!string.IsNullOrEmpty(status)) request.AddParameter("status", status);
+            if (!string.IsNullOrEmpty(notify)) request.AddParameter("notify", notify);
+            if (!string.IsNullOrEmpty(tags)) request.AddParameter("tags", tags);
+            if (!string.IsNullOrEmpty(teams)) request.AddParameter("teams", teams);
+            if (!string.IsNullOrEmpty(users)) request.AddParameter("users", users);
+            if (!string.IsNullOrEmpty(mandatory)) request.AddParameter("mandatory", mandatory);
+            if (!string.IsNullOrEmpty(commitSha)) request.AddParameter("commit_sha", commitSha);
+            if (!string.IsNullOrEmpty(buildServerUrl)) request.AddParameter("build_server_url", buildServerUrl);
+            if (!string.IsNullOrEmpty(repositoryUrl)) request.AddParameter("repository_url", repositoryUrl);
 
             request.AddFile("ipa", filePath);
+            request.Timeout = 3600000; // larger request timeout
 
             var response = _restClient.Put<HockeyAppResponse>(request);
 
