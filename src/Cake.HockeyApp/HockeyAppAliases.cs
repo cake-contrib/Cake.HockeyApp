@@ -37,7 +37,7 @@ namespace Cake.HockeyApp
         /// </example>
         [CakeAliasCategory("Deployment")]
         [CakeMethodAlias]
-        public static void UploadToHockeyApp(this ICakeContext context, FilePath file, HockeyAppUploadSettings settings)
+        public static void UploadToHockeyApp(this ICakeContext context, FilePath file, HockeyAppUploadSettings settings, FilePath symbolFile = null)
         {
             var uploader = new HockeyAppClient(context.Log);
 
@@ -46,7 +46,7 @@ namespace Cake.HockeyApp
 
             try
             {
-                uploader.UploadFile(file, settings);
+                uploader.UploadFile(file, settings, symbolFile);
             }
             catch (Exception e)
             {

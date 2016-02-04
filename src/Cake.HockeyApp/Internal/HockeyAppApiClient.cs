@@ -35,7 +35,7 @@ namespace Cake.HockeyApp.Internal
             string notesType, string status,
             string notify, string tags, string teams, string users, string mandatory, string commitSha,
             string buildServerUrl,
-            string repositoryUrl, string filePath)
+            string repositoryUrl, string filePath, string symbolPath)
         {
             var request = new RestRequest($"/api/2/apps/{appId}/app_versions/{version}");
 
@@ -56,6 +56,9 @@ namespace Cake.HockeyApp.Internal
             if (!string.IsNullOrEmpty(repositoryUrl)) request.AddParameter("repository_url", repositoryUrl);
 
             request.AddFile("ipa", filePath);
+
+            if (!string.IsNullOrEmpty(symbolPath)) request.AddFile("dsym", symbolPath);
+
             request.Timeout = 3600000; // larger request timeout
 
             var response = _restClient.Put<HockeyAppResponse>(request);
