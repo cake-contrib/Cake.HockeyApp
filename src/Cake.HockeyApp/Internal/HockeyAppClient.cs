@@ -19,7 +19,7 @@ namespace Cake.HockeyApp.Internal
             _log.Verbose("Initialized HockeyApp Api at {0}", HockeyAppBaseUrl);
         }
 
-        public void UploadFile(FilePath file, HockeyAppUploadSettings settings)
+        public void UploadFile(FilePath file, HockeyAppUploadSettings settings, FilePath symbolFile = null)
         {
             if (string.IsNullOrEmpty(settings.ApiToken))
                 throw new ArgumentNullException("settings.ApiToken", $"You have to ether specify an ApiToken or define the {HockeyAppAliases.TokenVariable} environment variable.");
@@ -31,7 +31,7 @@ namespace Cake.HockeyApp.Internal
 
             var versionId = CreateNewVersionAsync(settings);
 
-            UploadToVersion(file, settings, versionId);
+            UploadToVersion(file, settings, versionId, symbolFile);
         }
 
         internal string CreateNewVersionAsync(HockeyAppUploadSettings settings)
@@ -46,7 +46,7 @@ namespace Cake.HockeyApp.Internal
             return response.Id;
         }
 
-        internal void UploadToVersion(Path file, HockeyAppUploadSettings settings, string versionId)
+        internal void UploadToVersion(Path file, HockeyAppUploadSettings settings, string versionId, Path symbolFile = null)
         {
             _log.Verbose($"Uploading file {file.FullPath} to {settings.ShortVersion} ({settings.Version}) for {settings.AppId}.");
 
@@ -57,7 +57,7 @@ namespace Cake.HockeyApp.Internal
                     settings.Teams == null ? null : string.Join(",", settings.Teams),
                     settings.Users == null ? null : string.Join(",", settings.Users),
                     ((int?) settings.Mandatory).ToString(), settings.CommitSha, 
-                    settings.BuildServerUrl, settings.RepositoryUrl, file.FullPath);
+                    settings.BuildServerUrl, settings.RepositoryUrl, file.FullPath, symbolFile.FullPath);
 
 
             _log.Information( $"Uploaded file to HockeyApp. Title: {response.Title}, Version: {response.ShortVersion} ({response.Version})");

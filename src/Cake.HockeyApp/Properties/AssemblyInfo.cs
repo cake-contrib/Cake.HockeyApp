@@ -6,8 +6,8 @@
 using System.Reflection;
 
 [assembly: AssemblyProduct("Cake.HockeyApp")]
-[assembly: AssemblyVersion("0.2.0")]
-[assembly: AssemblyFileVersion("0.2.0")]
-[assembly: AssemblyInformationalVersion("0.2.0")]
+[assembly: AssemblyVersion("0.2.2")]
+[assembly: AssemblyFileVersion("0.2.2")]
+[assembly: AssemblyInformationalVersion("0.2.2")]
 [assembly: AssemblyCopyright("Copyright 2016 (c) Paul Reichelt and contributors")]
 
