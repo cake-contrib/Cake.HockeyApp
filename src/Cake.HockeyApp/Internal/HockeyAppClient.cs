@@ -56,8 +56,8 @@ namespace Cake.HockeyApp.Internal
                     settings.Tags == null ? null : string.Join(",", settings.Tags),
                     settings.Teams == null ? null : string.Join(",", settings.Teams),
                     settings.Users == null ? null : string.Join(",", settings.Users),
-                    ((int?) settings.Mandatory).ToString(), settings.CommitSha, 
-                    settings.BuildServerUrl, settings.RepositoryUrl, file.FullPath, symbolFile.FullPath);
+                    ((int?) settings.Mandatory).ToString(), settings?.CommitSha, 
+                    settings?.BuildServerUrl, settings?.RepositoryUrl, file?.FullPath, symbolFile?.FullPath);
 
 
             _log.Information( $"Uploaded file to HockeyApp. Title: {response.Title}, Version: {response.ShortVersion} ({response.Version})");
