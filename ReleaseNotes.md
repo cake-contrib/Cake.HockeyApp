@@ -1,3 +1,6 @@
+### New in 0.2.3
+- Bug fix for symbols (contributed by blounty)
+
 ### New in 0.2.2
 - Added support for uploading a dsym (contributed by kibiz0r)
 
