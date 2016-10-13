@@ -1,14 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.HockeyApp-old", "src\Cake.HockeyApp\Cake.HockeyApp-old.csproj", "{B53CE25B-1A98-4ED9-B342-0C8F58702C45}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.HockeyApp.Tests", "tests\Cake.HockeyApp.Tests\Cake.HockeyApp.Tests.csproj", "{51186358-347E-4871-BAF6-1D82F75A2A09}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{62B12293-F1AD-4AE5-8A8B-2854F70216A4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6B2C91CC-4969-40C5-8729-D6A2067C27DE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FDD918DF-906E-47AD-B5F1-136628D501B7}"
@@ -18,26 +12,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReleaseNotes.md = ReleaseNotes.md
 	EndProjectSection
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cake.HockeyApp", "src\Cake.HockeyApp\Cake.HockeyApp.xproj", "{3166C68C-0DE2-4AD6-9561-28D8F2C5EAF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B53CE25B-1A98-4ED9-B342-0C8F58702C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B53CE25B-1A98-4ED9-B342-0C8F58702C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B53CE25B-1A98-4ED9-B342-0C8F58702C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B53CE25B-1A98-4ED9-B342-0C8F58702C45}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51186358-347E-4871-BAF6-1D82F75A2A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51186358-347E-4871-BAF6-1D82F75A2A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51186358-347E-4871-BAF6-1D82F75A2A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51186358-347E-4871-BAF6-1D82F75A2A09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3166C68C-0DE2-4AD6-9561-28D8F2C5EAF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3166C68C-0DE2-4AD6-9561-28D8F2C5EAF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3166C68C-0DE2-4AD6-9561-28D8F2C5EAF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3166C68C-0DE2-4AD6-9561-28D8F2C5EAF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B53CE25B-1A98-4ED9-B342-0C8F58702C45} = {6B2C91CC-4969-40C5-8729-D6A2067C27DE}
-		{51186358-347E-4871-BAF6-1D82F75A2A09} = {62B12293-F1AD-4AE5-8A8B-2854F70216A4}
+		{3166C68C-0DE2-4AD6-9561-28D8F2C5EAF4} = {6B2C91CC-4969-40C5-8729-D6A2067C27DE}
 	EndGlobalSection
 EndGlobal

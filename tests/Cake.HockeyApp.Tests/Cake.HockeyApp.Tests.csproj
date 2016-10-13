@@ -66,12 +66,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Cake.HockeyApp\Cake.HockeyApp-old.csproj">
-      <Project>{b53ce25b-1a98-4ed9-b342-0c8f58702c45}</Project>
-      <Name>Cake.HockeyApp-old</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
