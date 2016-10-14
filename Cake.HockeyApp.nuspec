@@ -21,6 +21,7 @@
 
     <files>
         <file src="src\Cake.HockeyApp\bin\Release\net452\Cake.HockeyApp.dll" target="lib/net45" />
+        <file src="src\Cake.HockeyApp\bin\Release\net452\Cake.HockeyApp.xml" target="lib/net45" />
         <file src="src\Cake.HockeyApp\bin\Release\net452\Newtonsoft.Json.dll" target="lib/net45" />
     </files>
 </package>
