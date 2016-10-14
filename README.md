@@ -6,19 +6,22 @@
 [![nuget pre release](https://img.shields.io/nuget/vpre/Cake.HockeyApp.svg)](https://www.nuget.org/packages/Cake.HockeyApp)
 
 
-Cake.HockeyApp allows you to upload an app package to HockeyApp with just one line of code. In order to use the exposed
-commands you have to add the following line at top of your build.cake file.
+Cake.HockeyApp allows you to upload an app package to HockeyApp with just two lines of code. In order to use the exposed
+commands you have to add the following line at top of your build.cake file:
 
 ```cake
 #addin Cake.HockeyApp
 ```
 
-And upload the app.
+Then you can upload your package to HockeyApp:
 
 ```cake
 UploadToHockeyApp("./output/myApp.apk");
 ```
-> Don't forget to set your api token from HockeyApp as environment variable: `HOCKEYAPP_API_TOKEN`
+
+That's all!
+
+> Don't forget to set your api token from HockeyApp as environment variable: `HOCKEYAPP_API_TOKEN` on your local machine or CI system.
 
 ----
 
