@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -17,7 +18,9 @@
 
         public async Task<HockeyAppResponse> CreateNewVersionAsync(string apiToken, string appId, string bundleVersion, string bundleShortVersion)
         {
-            var request = new MultipartFormDataContent();
+            var request = new MultipartFormDataContent($"----CakeUpload{Guid.NewGuid().ToString().Replace('-', 'P')}");
+            var boundary = request.Headers.ContentType.Parameters.First();
+            boundary.Value = boundary.Value.Replace("\"", "");
 
             request.Headers.Add("X-HockeyAppToken", apiToken);
 
@@ -26,10 +29,7 @@
 
             var httpResponse = await _restClient.PostAsync($"/api/2/apps/{appId}/app_versions/new", request);
 
-            httpResponse.EnsureSuccessStatusCode();
-            var response =  await httpResponse.Content.ReadAsStringAsync() ;
-
-            return JsonConvert.DeserializeObject<HockeyAppResponse>(response);
+            return await HandleResponse(httpResponse);
         }
 
         public async Task<HockeyAppResponse> UploadFileToVersionAsync(string apiToken, string appId, string version, string notes,
@@ -40,7 +40,9 @@
         {
             Stream dsymStream = null, appStream = null;
 
-            var request = new MultipartFormDataContent();
+            var request = new MultipartFormDataContent($"----CakeUpload{Guid.NewGuid().ToString().Replace('-', 'P')}");
+            var boundary = request.Headers.ContentType.Parameters.First();
+            boundary.Value = boundary.Value.Replace("\"", "");
 
             request.Headers.Add("X-HockeyAppToken", apiToken);
 
@@ -57,12 +59,12 @@
             request.AddIfNotEmpty("repository_url", repositoryUrl);
 
             appStream = File.OpenRead(filePath);
-            request.Add(new StreamContent(appStream), "ipa");
+            request.Add(new StreamContent(appStream), "ipa", Path.GetFileName(filePath));
 
             if (!string.IsNullOrEmpty(symbolPath))
             {
                 dsymStream = File.OpenRead(symbolPath);
-                request.Add(new StreamContent(dsymStream), "dsym");
+                request.Add(new StreamContent(dsymStream), "dsym", Path.GetFileName(filePath));
             }
 
             _restClient.Timeout = TimeSpan.FromHours(1); // larger request timeout
@@ -72,10 +74,7 @@
             dsymStream?.Dispose();
             appStream?.Dispose();
 
-            httpResponse.EnsureSuccessStatusCode();
-            var response = await httpResponse.Content.ReadAsStringAsync();
-           
-            return JsonConvert.DeserializeObject<HockeyAppResponse>(response);
+            return await HandleResponse(httpResponse);
         }
 
         public async Task<HockeyAppResponse> UploadFileAsync(string apiToken, string notes,
@@ -86,7 +85,9 @@
         {
             Stream dsymStream = null, appStream = null;
 
-            var request = new MultipartFormDataContent();
+            var request = new MultipartFormDataContent($"----CakeUpload{Guid.NewGuid().ToString().Replace('-','P')}");
+            var boundary = request.Headers.ContentType.Parameters.First();
+            boundary.Value = boundary.Value.Replace("\"", "");
 
             request.Headers.Add("X-HockeyAppToken", apiToken);
 
@@ -106,12 +107,13 @@
             request.AddIfNotEmpty("repository_url", repositoryUrl);
 
             appStream = File.OpenRead(filePath);
-            request.Add(new StreamContent(appStream), "ipa");
+            request.AddIfNotEmpty("ipa", Path.GetFileName(filePath), appStream);
 
             if (!string.IsNullOrEmpty(symbolPath))
             {
                 dsymStream = File.OpenRead(symbolPath);
-                request.Add(new StreamContent(dsymStream), "dsym");
+                request.AddIfNotEmpty("dsym", Path.GetFileName(symbolPath), dsymStream);
+
             }
 
             _restClient.Timeout = TimeSpan.FromHours(1); // larger request timeout
@@ -121,10 +123,19 @@
             dsymStream?.Dispose();
             appStream?.Dispose();
 
-            httpResponse.EnsureSuccessStatusCode();
-            var response = await httpResponse.Content.ReadAsStringAsync();
+            return await HandleResponse(httpResponse);
+        }
 
-            return JsonConvert.DeserializeObject<HockeyAppResponse>(response);
+        private static async Task<HockeyAppResponse> HandleResponse(HttpResponseMessage httpResponse)
+        {
+            var response = await httpResponse.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<HockeyAppResponse>(response);
+
+            result.Success = httpResponse.IsSuccessStatusCode;
+            if (!result.Success)
+                result.Message = result.Message ?? $"({httpResponse.StatusCode}) {httpResponse.ReasonPhrase}";
+
+            return result;
         }
     }
 }

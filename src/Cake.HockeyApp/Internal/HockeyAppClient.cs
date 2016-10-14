@@ -45,6 +45,9 @@ namespace Cake.HockeyApp.Internal
             var response = await _client.CreateNewVersionAsync(settings.ApiToken, settings.AppId,
                 settings.Version, settings.ShortVersion);
 
+            if (!response.Success)
+                throw new Exception(response.Message);
+
             _log.Information( $"Created Version {response.ShortVersion} ({response.Version}) for {response.Title}.");
 
             return response.Id;
@@ -65,6 +68,9 @@ namespace Cake.HockeyApp.Internal
                     settings.Users == null ? null : string.Join(",", settings.Users),
                     ((int?) settings.Mandatory).ToString(), settings?.CommitSha, 
                     settings?.BuildServerUrl, settings?.RepositoryUrl, file?.FullPath, symbolFile?.FullPath);
+
+            if (!response.Success)
+                throw new Exception(response.Message);
 
             _log.Information( $"Uploaded file to HockeyApp. Title: {response.Title}, Version: {response.ShortVersion} ({response.Version})");
 
@@ -126,6 +132,9 @@ namespace Cake.HockeyApp.Internal
                 commitSha: settings?.CommitSha,
                 buildServerUrl: settings?.BuildServerUrl, 
                 repositoryUrl: settings?.RepositoryUrl);
+
+            if (!response.Success)
+                throw new Exception(response.Message);
 
             _log.Information($"Uploaded file to HockeyApp. Title: {response.Title}, Version: {response.ShortVersion} ({response.Version})");
 

@@ -1,26 +1,31 @@
-﻿using System.Threading.Tasks;
-using Cake.Core.Diagnostics;
-using Cake.HockeyApp.Internal;
-using Xunit;
-
-namespace Cake.HockeyApp.Tests
+﻿namespace Cake.HockeyApp.Tests
 {
+    using System;
+    using System.Threading.Tasks;
+    using Core;
+    using Core.Diagnostics;
+    using Core.IO;
+    using FakeItEasy;
+    using Xunit;
+
     public class HockeyAppTests
     {
         [Fact]
-        public void CanCreateNewVersion()
+        public void Can_upload_to_autodiscover()
         {
-            var client = new HockeyAppClient(new NullLog());
+            var log = A.Fake<ICakeLog>();
+            var context = A.Fake<ICakeContext>();
 
-            client.CreateNewVersionAsync(new HockeyAppUploadSettings
+            A.CallTo(() => context.Log).Returns(log);
+            A.CallTo(() => log.Write(A<Verbosity>._, A<LogLevel>._, A<string>._, A<object[]>._))
+                .Invokes(( Verbosity _,  LogLevel __, string format, object[] args) => Console.WriteLine(format, args));
+
+            var result = context.UploadToHockeyApp(new FilePath("C:/tmp/android.apk"), new HockeyAppUploadSettings()
             {
-                AppId = "4184d30dce316de5443480ad8254985c",
-                Version = "0.3.160108.1",
-                ShortVersion = "0.3",
-                Notify = NotifyOption.DoNotNotify,
-                Private = true,
-                Notes = "Uploaded via continuous integration."
+                ApiToken = "9ed5932bf6314dd2921abc38c6be6bde"
             });
+
+            var url = result.PublicUrl;
         }
     }
 }

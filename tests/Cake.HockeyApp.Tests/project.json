@@ -1,0 +1,23 @@
+﻿{
+  "version": "1.0.0-*",
+  "testRunner": "xunit",
+
+  "dependencies": {
+    "xunit": "2.2.0-beta3-build3402",
+    "Microsoft.NETCore.App": {
+      "version": "1.0.1",
+      "type": "platform"
+    },
+    "FakeItEasy": "2.4.0-netstd-build000033",
+    "dotnet-test-xunit": "2.2.0-preview2-build1029",
+    "Cake.HockeyApp": {
+      "target": "project"
+    }
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "portable-win+net45+wp8+win81+wpa8"
+    }
+  }
+}
