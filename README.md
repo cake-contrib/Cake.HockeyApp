@@ -2,8 +2,8 @@
 
 ![Cake.HockeyApp](https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/develop/Cake.HockeyApp.png) 
 
-![AppVeyor master branch](https://img.shields.io/appveyor/ci/reicheltp/cake-hockeyapp.svg)
-![nuget pre release](https://img.shields.io/nuget/vpre/Cake.HockeyApp.svg)
+[![AppVeyor master branch](https://img.shields.io/appveyor/ci/cakecontrib/cake-hockeyapp.svg)](https://ci.appveyor.com/project/cakecontrib/cake-hockeyapp)
+[![nuget pre release](https://img.shields.io/nuget/vpre/Cake.HockeyApp.svg)](https://www.nuget.org/packages/Cake.HockeyApp)
 
 
 Cake.HockeyApp allows you to upload an app package to HockeyApp with just one line of code. In order to use the exposed
