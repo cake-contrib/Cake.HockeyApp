@@ -3,7 +3,10 @@
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "Cake.Core": "0.16.*",
+    "Cake.Core": {
+      "version": "0.17.0",
+      "type": "build"
+    },
     "Newtonsoft.Json": "9.0.*"
   },
 
