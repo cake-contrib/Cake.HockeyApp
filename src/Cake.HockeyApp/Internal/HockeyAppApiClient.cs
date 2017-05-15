@@ -13,7 +13,12 @@
 
         public HockeyAppApiClient(string baseUrl)
         {
-            _restClient = new HttpClient { BaseAddress = new Uri(baseUrl) };
+            _restClient = new HttpClient
+            {
+                BaseAddress = new Uri(baseUrl),
+                Timeout = TimeSpan.FromHours(1)
+            };
+            // larger request timeout
         }
 
         public async Task<HockeyAppResponse> CreateNewVersionAsync(string apiToken, string appId, string bundleVersion, string bundleShortVersion)
@@ -24,8 +29,8 @@
 
             request.Headers.Add("X-HockeyAppToken", apiToken);
 
-            request.Add(new StringContent(bundleVersion), "bundle_version");
-            request.Add(new StringContent(bundleShortVersion), "bundle_short_version");
+            request.Add(new StringContent(bundleVersion), "\"bundle_version\"");
+            request.Add(new StringContent(bundleShortVersion), "\"bundle_short_version\"");
 
             var httpResponse = await _restClient.PostAsync($"/api/2/apps/{appId}/app_versions/new", request);
 
@@ -66,8 +71,6 @@
                 dsymStream = File.OpenRead(symbolPath);
                 request.Add(new StreamContent(dsymStream), "dsym", Path.GetFileName(filePath));
             }
-
-            _restClient.Timeout = TimeSpan.FromHours(1); // larger request timeout
 
             var httpResponse = await _restClient.PutAsync($"/api/2/apps/{appId}/app_versions/{version}", request);
 

@@ -1,5 +1,3 @@
-#addin "Cake.Xamarin"
-
 // ARGUMENTS
 var target = Argument("target", "default");
 var configuration = Argument("configuration", "release");

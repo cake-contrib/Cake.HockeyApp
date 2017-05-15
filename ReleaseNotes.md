@@ -1,5 +1,5 @@
 ### New in 0.3.0
-- Added support for .NET Core
+- Added support for .NET Core and update Cake dependency
 
 ### New in 0.2.3
 - Bug fix for symbols (contributed by blounty)
