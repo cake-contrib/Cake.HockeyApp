@@ -1,23 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6B2C91CC-4969-40C5-8729-D6A2067C27DE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FDD918DF-906E-47AD-B5F1-136628D501B7}"
 	ProjectSection(SolutionItems) = preProject
 		build.cake = build.cake
-		global.json = global.json
 		README.md = README.md
 		ReleaseNotes.md = ReleaseNotes.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cake.HockeyApp", "src\Cake.HockeyApp\Cake.HockeyApp.xproj", "{3166C68C-0DE2-4AD6-9561-28D8F2C5EAF4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1F7D196D-556A-4B30-A706-735A1F7AB5D8}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Cake.HockeyApp.Tests", "tests\Cake.HockeyApp.Tests\Cake.HockeyApp.Tests.xproj", "{D1B6A4B4-C26D-4394-BE36-50E2B67B8B3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.HockeyApp", "src\Cake.HockeyApp\Cake.HockeyApp.csproj", "{3166C68C-0DE2-4AD6-9561-28D8F2C5EAF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.HockeyApp.Tests", "tests\Cake.HockeyApp.Tests\Cake.HockeyApp.Tests.csproj", "{D1B6A4B4-C26D-4394-BE36-50E2B67B8B3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
