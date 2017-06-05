@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="0.16.2" />
     <PackageReference Include="FakeItEasy" Version="3.3.2" />
+    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="15.0.0" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>

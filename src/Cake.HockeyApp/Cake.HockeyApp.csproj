@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <VersionPrefix>0.3.0</VersionPrefix>
-    <TargetFrameworks>net452;netstandard1.6</TargetFrameworks>
+    <TargetFrameworks>net45;netstandard1.6</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Cake.HockeyApp</AssemblyName>
     <PackageId>Cake.HockeyApp</PackageId>
