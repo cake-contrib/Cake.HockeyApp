@@ -8,7 +8,8 @@ BuildParameters.SetParameters(context: Context,
                             title: "Cake.HockeyApp",
                             repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.HockeyApp",
-                            appVeyorAccountName: "cakecontrib");
+                            appVeyorAccountName: "cakecontrib",
+                            shouldRunDupFinder: false);
 
 BuildParameters.PrintParameters(Context);
 
