@@ -9,7 +9,7 @@
         <description>HockeyApp Addin for Cake Build Automation System.</description>
         <summary>The HockeyApp Addin for Cake allows you to upload you app package to HockeyApp.</summary>
         <language>en-US</language>
-        <tags>Cake Script Build HockeyApp Deploment</tags>
+        <tags>Cake Script Build HockeyApp Deployment</tags>
         <projectUrl>https://github.com/cake-contrib/Cake.HockeyApp</projectUrl>
         <licenseUrl>https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/master/LICENSE.md</licenseUrl>
         <iconUrl>https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/develop/Cake.HockeyApp.png</iconUrl>
@@ -20,8 +20,8 @@
     </metadata>
 
     <files>
-        <file src="src\Cake.HockeyApp\bin\Release\net452\Cake.HockeyApp.dll" target="lib/net45" />
-        <file src="src\Cake.HockeyApp\bin\Release\net452\Cake.HockeyApp.xml" target="lib/net45" />
-        <file src="src\Cake.HockeyApp\bin\Release\net452\Newtonsoft.Json.dll" target="lib/net45" />
+        <file src="src\Cake.HockeyApp\bin\Release\net452\Cake.HockeyApp.dll" target="lib\net45" />
+        <file src="src\Cake.HockeyApp\bin\Release\net452\Cake.HockeyApp.xml" target="lib\net45" />
+        <file src="src\Cake.HockeyApp\bin\Release\net452\Newtonsoft.Json.dll" target="lib\net45" />
     </files>
 </package>
