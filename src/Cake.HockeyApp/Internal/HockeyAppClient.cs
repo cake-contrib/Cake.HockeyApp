@@ -24,7 +24,7 @@ namespace Cake.HockeyApp.Internal
         {
             if (string.IsNullOrEmpty(settings.ApiToken))
                 throw new ArgumentNullException("settings.ApiToken",
-                    $"You have to ether specify an ApiToken or define the {HockeyAppAliases.TokenVariable} environment variable.");
+                    $"You have to either specify an ApiToken or define the {HockeyAppAliases.TokenVariable} environment variable.");
 
             _log.Information("Uploading file to HockeyApp. This can take several minutes....");
 
@@ -66,7 +66,7 @@ namespace Cake.HockeyApp.Internal
                     settings.Tags == null ? null : string.Join(",", settings.Tags),
                     settings.Teams == null ? null : string.Join(",", settings.Teams),
                     settings.Users == null ? null : string.Join(",", settings.Users),
-                    ((int?) settings.Mandatory).ToString(), settings?.CommitSha, 
+                    ((int?) settings.Mandatory).ToString(), settings?.CommitSha,
                     settings?.BuildServerUrl, settings?.RepositoryUrl, file?.FullPath, symbolFile?.FullPath);
 
             if (!response.Success)
@@ -116,21 +116,21 @@ namespace Cake.HockeyApp.Internal
 
             var response = await _client.UploadFileAsync(
                 apiToken: settings.ApiToken,
-                filePath: file?.FullPath, 
+                filePath: file?.FullPath,
                 symbolPath: symbolFile?.FullPath,
                 notes: settings.Notes,
                 notesType: ((int?) settings.NoteType).ToString(),
                 notify: ((int?) settings.Notify).ToString(),
                 status: ((int?) settings.Status).ToString(),
                 tags: settings.Tags == null ? null : string.Join(",", settings.Tags),
-                teams: settings.Teams == null ? null : string.Join(",", settings.Teams), 
+                teams: settings.Teams == null ? null : string.Join(",", settings.Teams),
                 users: settings.Users == null ? null : string.Join(",", settings.Users),
-                mandatory: ((int?) settings.Mandatory).ToString(), 
+                mandatory: ((int?) settings.Mandatory).ToString(),
                 releaseType: ((int?)settings.ReleaseType).ToString(),
                 @private: (settings.Private).ToString(),
                 ownerId: settings.OwnerId,
                 commitSha: settings?.CommitSha,
-                buildServerUrl: settings?.BuildServerUrl, 
+                buildServerUrl: settings?.BuildServerUrl,
                 repositoryUrl: settings?.RepositoryUrl);
 
             if (!response.Success)
