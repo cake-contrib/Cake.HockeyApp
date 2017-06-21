@@ -25,6 +25,5 @@
     <file src="net45\Newtonsoft.Json.dll" target="lib/net45" />
     <file src="netstandard1.6\Cake.HockeyApp.dll" target="lib/netstandard1.6" />
     <file src="netstandard1.6\Cake.HockeyApp.xml" target="lib/netstandard1.6" />
-    <file src="net45\Newtonsoft.Json.dll" target="lib/netstandard1.6" />
   </files>
 </package>
