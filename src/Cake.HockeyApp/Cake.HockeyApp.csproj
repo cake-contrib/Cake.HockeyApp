@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <VersionPrefix>0.3.0</VersionPrefix>
+    <TargetFrameworks>net45;netstandard1.6</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Cake.HockeyApp</AssemblyName>
+    <PackageId>Cake.HockeyApp</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <Copyright>Copyright 2017 (c) Paul Reichelt and contributors</Copyright>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/cake-contrib/Cake.HockeyApp</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/develop/Cake.HockeyApp.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/cake-contrib/Cake.HockeyApp</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Cake Script Build HockeyApp Deployment</PackageTags>
+    <Description>HockeyApp Addin for Cake Build Automation System.</Description>
+    <Authors>Paul Reichelt, Cake Contributors</Authors>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/master/LICENSE.md</PackageLicenseUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net452|AnyCPU'">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cake.Core" Version="0.16.*">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="System.Net.Http" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>

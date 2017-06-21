@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Cake.HockeyApp</id>
+    <version>0.0.0</version>
+    <authors>Paul Reichelt, Cake Contributors</authors>
+    <owners>Paul Reichelt, Cake Contributors</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/cake-contrib/Cake.HockeyApp</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/develop/Cake.HockeyApp.png</iconUrl>
+    <description>HockeyApp Addin for Cake Build Automation System.</description>
+    <copyright>Copyright 2017 (c) Paul Reichelt and contributors</copyright>
+    <tags>Cake Script Build HockeyApp Deployment</tags>
+    <repository type="GitHub" url="https://github.com/cake-contrib/Cake.HockeyApp" />
+  </metadata>
+  <files>
+    <file src="net45\Cake.HockeyApp.dll" target="lib/net45" />
+    <file src="net45\Cake.HockeyApp.xml" target="lib/net45" />
+    <file src="net45\Newtonsoft.Json.dll" target="lib/net45" />
+    <file src="netstandard1.6\Cake.HockeyApp.dll" target="lib/netstandard1.6" />
+    <file src="netstandard1.6\Cake.HockeyApp.xml" target="lib/netstandard1.6" />
+  </files>
+</package>

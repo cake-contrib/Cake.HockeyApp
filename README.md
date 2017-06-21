@@ -1,34 +1,78 @@
-# Cake.HockeyApp Addin 
+# Cake.HockeyApp - An Addin for Cake
 
-![AppVeyor master branch](https://img.shields.io/appveyor/ci/reicheltp/cake-hockeyapp.svg)
-![nuget pre release](https://img.shields.io/nuget/vpre/Cake.HockeyApp.svg)
+![Cake.HockeyApp](https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/develop/Cake.HockeyApp.png)
 
-This Addin for the Cake Build Automation System allows you to deploy your package to HockeyApp. More about Cake at http://cakebuild.net
+[![AppVeyor master branch](https://img.shields.io/appveyor/ci/cakecontrib/cake-hockeyapp.svg)](https://ci.appveyor.com/project/cakecontrib/cake-hockeyapp)
+[![nuget pre release](https://img.shields.io/nuget/vpre/Cake.HockeyApp.svg)](https://www.nuget.org/packages/Cake.HockeyApp)
 
-## Use the addin
 
-To use the HockeyApp in your cake file simply import it and define a publish task.
+Cake.HockeyApp allows you to upload an app package to HockeyApp with just two lines of code. In order to use the exposed
+commands you have to add the following line at top of your build.cake file:
+
 ```cake
-#addin "Cake.HockeyApp"
+#addin Cake.HockeyApp
+```
 
-Task("deploy")
-    .Does(() => 
+Then you can upload your package to HockeyApp:
+
+```cake
+UploadToHockeyApp("./output/myApp.apk");
+```
+
+That's all!
+
+> Don't forget to set your api token from HockeyApp as environment variable: `HOCKEYAPP_API_TOKEN` on your local machine or CI system.
+
+----
+
+## More Examples
+
+### Upload an apk / ipa to HockeyApp
+```cake
+Task("Upload-To-HockeyApp")
+    .IsDependentOn("Build-APK")
+    .Does(() => UploadToHockeyApp("./output/myApp.apk"));
+```
+
+### Upload an apk / ipa to HockeyApp with result.
+```cake
+Task("Upload-To-HockeyApp")
+    .IsDependentOn("Build-APK")
+    .Does(() =>
+{
+    var result = UploadToHockeyApp("./output/myApp.apk"));
+    // Use result.PublicUrl to inform others where they can download the newly uploaded package.
+}
+```
+
+### Upload a Windows package.
+
+Unfortunately, HockeyApp currently does only support metadata discovering for Android, iOS and macOS packages.
+Therefore you have to specify a version AND app id your self. This means that you have to create the app once
+before uploading. [Create new App](http://rink.hockeyapp.net/manage/apps/new). Creating a new
+version is automatically done by this addin.
+
+```cake
+Task("Upload-To-HockeyApp")
+    .IsDependentOn("Build-AppX")
+    .Does(() =>
+{
+    UploadToHockeyApp( "./output/myWindowsApp.appx", new HockeyAppUploadSettings
     {
-        UploadToHockeyApp( pathToYourPackageFile, new HockeyAppUploadSettings 
-        {
-            AppId = appIdFromHockeyApp,
-            Version = "1.0.160901.1",
-            ShortVersion = "1.0-beta2",
-            Notes = "Uploaded via continuous integration."
-        });
+        AppId = appIdFromHockeyApp,
+        Version = "1.0.160901.1",
+        ShortVersion = "1.0-beta2",
+        Notes = "Uploaded via continuous integration."
     });
+}
 ```
 
 The available parameters for the upload settings are descripted here: http://support.hockeyapp.net/kb/api/api-versions#upload-version
 
-`AppId`, `ApiToken` and `Version` are **required parameters** you have to set. 
+> **REMEMBER** For all request you make you either have to set your API token from HockeyApp as environment variable: `HOCKEYAPP_API_TOKEN`
+> or pass it into the call via <see cref="HockeyAppUploadSettings.AppId" />
 
->   Do not checkin the HockeyApp API Token into your source control. Either use `HockeyAppUploadSettings.ApiToken` or the `HOCKEYAPP_API_TOKEN` environment variable.
+----
 
 ## Build
 
@@ -37,14 +81,10 @@ To build this package we are using Cake.
 On Windows PowerShell run:
 
 ```powershell
-./build restore
 ./build
 ```
 
 On OSX/Linux run:
 ```bash
-./build.sh restore
 ./build.sh
 ```
-
-Run `pack` alias to create a nuget package.

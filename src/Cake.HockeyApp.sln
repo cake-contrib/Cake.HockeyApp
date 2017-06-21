@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FDD918DF-906E-47AD-B5F1-136628D501B7}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+		..\setup.cake = ..\setup.cake
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.HockeyApp", "Cake.HockeyApp\Cake.HockeyApp.csproj", "{D0052ED8-402C-413A-A4B8-2D8D109CFDF2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.HockeyApp.Tests", "Cake.HockeyApp.Tests\Cake.HockeyApp.Tests.csproj", "{32ED858A-565E-4E14-84EF-32C2EFBE6C4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0052ED8-402C-413A-A4B8-2D8D109CFDF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0052ED8-402C-413A-A4B8-2D8D109CFDF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0052ED8-402C-413A-A4B8-2D8D109CFDF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0052ED8-402C-413A-A4B8-2D8D109CFDF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32ED858A-565E-4E14-84EF-32C2EFBE6C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32ED858A-565E-4E14-84EF-32C2EFBE6C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32ED858A-565E-4E14-84EF-32C2EFBE6C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32ED858A-565E-4E14-84EF-32C2EFBE6C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

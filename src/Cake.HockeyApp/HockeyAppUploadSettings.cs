@@ -1,7 +1,7 @@
 namespace Cake.HockeyApp
 {
     /// <summary>
-    /// Contains settings used by <see cref"Cake.HockeyApp.Internal.HockeyAppClient" />
+    /// Contains settings used by <see cref="Cake.HockeyApp.Internal.HockeyAppClient" />
     /// For a detailed information look at the official <see href="http://support.hockeyapp.net/kb/api/api-versions#upload-version">API Documentation</see>
     /// </summary>
     public class HockeyAppUploadSettings
@@ -13,13 +13,13 @@ namespace Cake.HockeyApp
         public string ApiToken { get; set; }
 
         /// <summary>
-        /// Gets or sets the application id. This is a required property. 
+        /// Gets or sets the application id. This is a required property if you don't upload an apk or ipa.
         /// You can only upload packages to apps you have created before.
         /// </summary>
         public string AppId { get; set; }
 
         /// <summary>
-        /// Gets or sets the version tag. This is a required property.
+        /// Gets or sets the version tag. This is a required property if you don't upload an apk or ipa. 
         /// </summary>
         public string Version { get; set; }
 
