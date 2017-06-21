@@ -9,9 +9,9 @@
 
     /// <summary>
     /// <para>Contains functionality related to <see href="http://hockeyapp.net">HockeyApp</see>.</para>
-    /// <para> 
-    /// It allows you to upload an app package to HockeyApp with just one line of code. In order to use the exposed 
-    /// commands you have to add the following line at top of your build.cake file. 
+    /// <para>
+    /// It allows you to upload an app package to HockeyApp with just one line of code. In order to use the exposed
+    /// commands you have to add the following line at top of your build.cake file.
     /// </para>
     /// <code>
     /// #addin Cake.HockeyApp
@@ -21,34 +21,34 @@
     /// <para>Upload an apk to HockeyApp:</para>
     /// <code>
     /// Task("Upload-To-HockeyApp")
-    ///     .DependsOn("Build-APK")
+    ///     .IsDependentOn("Build-APK")
     ///     .Does(() => UploadToHockeyApp("./output/myApp.apk"));
     /// </code>
-    /// 
+    ///
     /// <para>Upload an apk to HockeyApp with result.</para>
     /// <code>
     /// Task("Upload-To-HockeyApp")
-    ///     .DependsOn("Build-APK")
+    ///     .IsDependentOn("Build-APK")
     ///     .Does(() =>
     /// {
     ///     var result = UploadToHockeyApp("./output/myApp.apk"));
     ///     // Use result.PublicUrl to inform others where they can download the newly uploaded package.
     /// }
     /// </code>
-    /// 
+    ///
     /// <para>Upload a Windows package.</para>
     /// <para>
     /// Unfortunately, HockeyApp currently does only support metadata discovering for Android, iOS and macOS packages.
-    /// Therefore you have to specify a version AND app id your self. This means that you have to create the app once 
-    /// before uploading. <see cref="http://rink.hockeyapp.net/manage/apps/new">Create new App</see>. Creating a new 
+    /// Therefore you have to specify a version AND app id your self. This means that you have to create the app once
+    /// before uploading. <see cref="http://rink.hockeyapp.net/manage/apps/new">Create new App</see>. Creating a new
     /// version is automatically done by this addin.
     /// </para>
     /// <code>
     /// Task("Upload-To-HockeyApp")
-    ///     .DependsOn("Build-AppX")
+    ///     .IsDependentOn("Build-AppX")
     ///     .Does(() =>
     /// {
-    ///     UploadToHockeyApp( "./output/myWindowsApp.appx", new HockeyAppUploadSettings 
+    ///     UploadToHockeyApp( "./output/myWindowsApp.appx", new HockeyAppUploadSettings
     ///     {
     ///         AppId = appIdFromHockeyApp,
     ///         Version = "1.0.160901.1",
@@ -57,7 +57,7 @@
     ///     });
     /// }
     /// </code>
-    /// 
+    ///
     /// <para>
     /// For all request you make you either have to set your API token from HockeyApp as environment variable: HOCKEYAPP_API_TOKEN
     /// or pass it into the call via <see cref="HockeyAppUploadSettings.AppId" />
@@ -81,7 +81,7 @@
         /// <param name="settings">The upload settings</param>
         /// <example>
         /// <code>
-        /// UploadToHockeyApp( pathToYourPackageFile, new HockeyAppUploadSettings 
+        /// UploadToHockeyApp( pathToYourPackageFile, new HockeyAppUploadSettings
         /// {
         ///     AppId = appIdFromHockeyApp,
         ///     Version = "1.0.160901.1",
@@ -89,7 +89,7 @@
         ///     Notes = "Uploaded via continuous integration."
         /// });
         /// </code>
-        /// Do not checkin the HockeyApp API Token into your source control. 
+        /// Do not checkin the HockeyApp API Token into your source control.
         /// Either use HockeyAppUploadSettings.ApiToken or the HOCKEYAPP_API_TOKEN environment variable.
         /// </example>
         [CakeAliasCategory("Deployment")]
@@ -98,7 +98,7 @@
             => UploadToHockeyApp(context, file, null, settings);
 
         /// <summary>
-        /// Uploads the specified package and symbols file to HockeyApp. The version is automatically detected from the package metadata. 
+        /// Uploads the specified package and symbols file to HockeyApp. The version is automatically detected from the package metadata.
         /// This only works with *.ipa for iOS, *.app.zip for OS X, or *.apk files for Android.
         /// </summary>
         /// <param name="context">The Cake context</param>
@@ -115,7 +115,7 @@
             => UploadToHockeyApp(context, file, null, new HockeyAppUploadSettings());
 
         /// <summary>
-        /// Uploads the specified package and symbols file to HockeyApp. The version is automatically detected from the package metadata. 
+        /// Uploads the specified package and symbols file to HockeyApp. The version is automatically detected from the package metadata.
         /// This only works with *.ipa for iOS, *.app.zip for OS X, or *.apk files for Android.
         /// </summary>
         /// <param name="context">The Cake context</param>
@@ -142,7 +142,7 @@
         /// <param name="settings">The upload settings</param>
         /// <example>
         /// <code>
-        /// UploadToHockeyApp( pathToYourPackageFile, pathToSymbolsFile, new HockeyAppUploadSettings 
+        /// UploadToHockeyApp( pathToYourPackageFile, pathToSymbolsFile, new HockeyAppUploadSettings
         /// {
         ///     AppId = appIdFromHockeyApp,
         ///     Version = "1.0.160901.1",
@@ -150,7 +150,7 @@
         ///     Notes = "Uploaded via continuous integration."
         /// });
         /// </code>
-        /// Do not checkin the HockeyApp API Token into your source control. 
+        /// Do not checkin the HockeyApp API Token into your source control.
         /// Either use HockeyAppUploadSettings.ApiToken or the HOCKEYAPP_API_TOKEN environment variable.
         /// </example>
         [CakeAliasCategory("Deployment")]

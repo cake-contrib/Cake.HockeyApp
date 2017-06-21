@@ -1,6 +1,6 @@
-# Cake.HockeyApp - An Addin for Cake  
+# Cake.HockeyApp - An Addin for Cake
 
-![Cake.HockeyApp](https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/develop/Cake.HockeyApp.png) 
+![Cake.HockeyApp](https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/develop/Cake.HockeyApp.png)
 
 [![AppVeyor master branch](https://img.shields.io/appveyor/ci/cakecontrib/cake-hockeyapp.svg)](https://ci.appveyor.com/project/cakecontrib/cake-hockeyapp)
 [![nuget pre release](https://img.shields.io/nuget/vpre/Cake.HockeyApp.svg)](https://www.nuget.org/packages/Cake.HockeyApp)
@@ -30,14 +30,14 @@ That's all!
 ### Upload an apk / ipa to HockeyApp
 ```cake
 Task("Upload-To-HockeyApp")
-    .DependsOn("Build-APK")
+    .IsDependentOn("Build-APK")
     .Does(() => UploadToHockeyApp("./output/myApp.apk"));
 ```
 
 ### Upload an apk / ipa to HockeyApp with result.
 ```cake
 Task("Upload-To-HockeyApp")
-    .DependsOn("Build-APK")
+    .IsDependentOn("Build-APK")
     .Does(() =>
 {
     var result = UploadToHockeyApp("./output/myApp.apk"));
@@ -54,7 +54,7 @@ version is automatically done by this addin.
 
 ```cake
 Task("Upload-To-HockeyApp")
-    .DependsOn("Build-AppX")
+    .IsDependentOn("Build-AppX")
     .Does(() =>
 {
     UploadToHockeyApp( "./output/myWindowsApp.appx", new HockeyAppUploadSettings
