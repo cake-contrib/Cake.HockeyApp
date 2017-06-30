@@ -24,8 +24,8 @@
 
             request.Headers.Add("X-HockeyAppToken", apiToken);
 
-            request.Add(new StringContent(bundleVersion), "bundle_version");
-            request.Add(new StringContent(bundleShortVersion), "bundle_short_version");
+            request.AddIfNotEmpty("bundle_version",bundleVersion);
+            request.AddIfNotEmpty("bundle_short_version", bundleShortVersion);
 
             var httpResponse = await _restClient.PostAsync($"/api/2/apps/{appId}/app_versions/new", request);
 
