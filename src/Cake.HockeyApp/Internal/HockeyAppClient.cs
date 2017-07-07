@@ -48,7 +48,7 @@ namespace Cake.HockeyApp.Internal
             if (!response.Success)
                 throw new Exception(response.Message);
 
-            _log.Information( $"Created Version {response.ShortVersion} ({response.Version}) for {response.Title}.");
+            _log.Information($"Created Version {response.ShortVersion} ({response.Version}) for {response.Title}.");
 
             return response.Id;
         }
@@ -61,25 +61,25 @@ namespace Cake.HockeyApp.Internal
             _log.Verbose($"Uploading file {file.FullPath} to {settings.ShortVersion} ({settings.Version}) for {settings.AppId}.");
 
             var response = await _client.UploadFileToVersionAsync(settings.ApiToken, settings.AppId, versionId,
-                    settings.Notes, ((int?) settings.NoteType).ToString(), ((int?) settings.Status).ToString(),
-                    ((int?) settings.Notify).ToString(),
+                    settings.Notes, ((int?)settings.NoteType).ToString(), ((int?)settings.Status).ToString(),
+                    ((int?)settings.Notify).ToString(),
                     settings.Tags == null ? null : string.Join(",", settings.Tags),
                     settings.Teams == null ? null : string.Join(",", settings.Teams),
                     settings.Users == null ? null : string.Join(",", settings.Users),
-                    ((int?) settings.Mandatory).ToString(), settings?.CommitSha,
+                    ((int?)settings.Mandatory).ToString(), settings?.CommitSha,
                     settings?.BuildServerUrl, settings?.RepositoryUrl, file?.FullPath, symbolFile?.FullPath);
 
             if (!response.Success)
                 throw new Exception(response.Message);
 
-            _log.Information( $"Uploaded file to HockeyApp. Title: {response.Title}, Version: {response.ShortVersion} ({response.Version})");
+            _log.Information($"Uploaded file to HockeyApp. Title: {response.Title}, Version: {response.ShortVersion} ({response.Version})");
 
             return new HockeyAppUploadResult
             {
                 Title = response.Title,
                 ConfigUrl = response.ConfigUrl,
                 PublicUrl = response.PublicUrl,
-                DownloadStatus = (DownloadStatus?) response.Status ?? DownloadStatus.NotAllowed
+                DownloadStatus = (DownloadStatus?)response.Status ?? DownloadStatus.NotAllowed
             };
         }
 
@@ -101,14 +101,14 @@ namespace Cake.HockeyApp.Internal
 
             if (symbolFile != null)
             {
-                var isSupportedSymbols = file.FullPath.EndsWith(".dsym.zip")
-                                         || file.FullPath.EndsWith("mapping.txt");
+                var isSupportedSymbols = symbolFile.FullPath.EndsWith(".dsym.zip")
+                || symbolFile.FullPath.EndsWith("mapping.txt");
 
                 if (!isSupportedSymbols)
                 {
                     throw new ArgumentException(
                         "Symbols file needs to be of the following type: *.dsym.zip for iOS / OS X, or mapping.txt file for Android.",
-                        nameof(file));
+                        nameof(symbolFile));
                 }
             }
 
@@ -119,13 +119,13 @@ namespace Cake.HockeyApp.Internal
                 filePath: file?.FullPath,
                 symbolPath: symbolFile?.FullPath,
                 notes: settings.Notes,
-                notesType: ((int?) settings.NoteType).ToString(),
-                notify: ((int?) settings.Notify).ToString(),
-                status: ((int?) settings.Status).ToString(),
+                notesType: ((int?)settings.NoteType).ToString(),
+                notify: ((int?)settings.Notify).ToString(),
+                status: ((int?)settings.Status).ToString(),
                 tags: settings.Tags == null ? null : string.Join(",", settings.Tags),
                 teams: settings.Teams == null ? null : string.Join(",", settings.Teams),
                 users: settings.Users == null ? null : string.Join(",", settings.Users),
-                mandatory: ((int?) settings.Mandatory).ToString(),
+                mandatory: ((int?)settings.Mandatory).ToString(),
                 releaseType: ((int?)settings.ReleaseType).ToString(),
                 @private: (settings.Private).ToString(),
                 ownerId: settings.OwnerId,
