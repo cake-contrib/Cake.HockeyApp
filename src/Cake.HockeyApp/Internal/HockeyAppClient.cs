@@ -101,14 +101,14 @@ namespace Cake.HockeyApp.Internal
 
             if (symbolFile != null)
             {
-                var isSupportedSymbols = file.FullPath.EndsWith(".dsym.zip")
-                                         || file.FullPath.EndsWith("mapping.txt");
+                var isSupportedSymbols = symbolFile.FullPath.EndsWith(".dsym.zip")
+                || symbolFile.FullPath.EndsWith("mapping.txt");
 
                 if (!isSupportedSymbols)
                 {
                     throw new ArgumentException(
                         "Symbols file needs to be of the following type: *.dsym.zip for iOS / OS X, or mapping.txt file for Android.",
-                        nameof(file));
+                        nameof(symbolFile));
                 }
             }
 
