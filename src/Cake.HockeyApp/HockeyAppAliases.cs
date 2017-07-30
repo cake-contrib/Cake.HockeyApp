@@ -130,7 +130,7 @@
         [CakeAliasCategory("Deployment")]
         [CakeMethodAlias]
         public static HockeyAppUploadResult UploadToHockeyApp(this ICakeContext context, FilePath file, FilePath symbolsFile)
-            => UploadToHockeyApp(context, file, null, new HockeyAppUploadSettings());
+            => UploadToHockeyApp(context, file, symbolsFile, new HockeyAppUploadSettings());
 
         /// <summary>
         /// Uploads the specified package to HockeyApp. Currently it is required to specify the AppId and the
