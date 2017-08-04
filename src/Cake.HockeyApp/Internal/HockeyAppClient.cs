@@ -7,7 +7,7 @@ namespace Cake.HockeyApp.Internal
 
     internal class HockeyAppClient
     {
-        private const string HockeyAppBaseUrl = "https://rink.hockeyapp.net";
+        private const string HockeyAppBaseUrl = "https://upload.hockeyapp.net"; // Only suitable for PUT/POST, use rink.hockeyapp.net for GET
 
         private readonly HockeyAppApiClient _client;
         private readonly ICakeLog _log;
