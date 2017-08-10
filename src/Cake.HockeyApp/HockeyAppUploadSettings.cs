@@ -7,10 +7,16 @@ namespace Cake.HockeyApp
     public class HockeyAppUploadSettings
     {
         /// <summary>
-        /// Gets or sets the token used for authentication. 
+        /// Gets or sets the token used for authentication.
         /// If the token is not set it is loaded from the HOCKEYAPP_API_TOKEN environment variable.
         /// </summary>
         public string ApiToken { get; set; }
+
+        /// <summary>
+        /// Gets or sets the base URL for connection to the HockeyApp api.
+        /// Default is https://rink.hockeyapp.net
+        /// </summary>
+        public string ApiBaseUrl { get; set; } = "https://rink.hockeyapp.net";
 
         /// <summary>
         /// Gets or sets the application id. This is a required property if you don't upload an apk or ipa.
@@ -19,7 +25,7 @@ namespace Cake.HockeyApp
         public string AppId { get; set; }
 
         /// <summary>
-        /// Gets or sets the version tag. This is a required property if you don't upload an apk or ipa. 
+        /// Gets or sets the version tag. This is a required property if you don't upload an apk or ipa.
         /// </summary>
         public string Version { get; set; }
 
