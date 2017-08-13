@@ -159,7 +159,7 @@
         {
             settings = settings ?? new HockeyAppUploadSettings();
 
-            var uploader = new HockeyAppClient(context.Log);
+            var uploader = new HockeyAppClient(context.Log, settings);
 
             settings.ApiToken = settings.ApiToken ??
                                 context.Environment.GetEnvironmentVariable(TokenVariable);
