@@ -52,7 +52,7 @@ namespace Cake.HockeyApp.Internal
         }
 
         /// <summary>
-        /// Uploads file & symbols to an existing version.
+        /// Uploads file and symbols to an existing version.
         /// </summary>
         internal async Task<HockeyAppUploadResult> UploadToVersion(FilePath file, FilePath symbolFile, HockeyAppUploadSettings settings, string versionId)
         {
@@ -82,7 +82,7 @@ namespace Cake.HockeyApp.Internal
         }
 
         /// <summary>
-        /// Uploads file & symbols to autodetect endpoint.
+        /// Uploads file and symbols to autodetect endpoint.
         /// </summary>
         internal async Task<HockeyAppUploadResult> Upload(FilePath file, FilePath symbolFile, HockeyAppUploadSettings settings)
         {

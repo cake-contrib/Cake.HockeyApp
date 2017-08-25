@@ -77,7 +77,7 @@ namespace Cake.HockeyApp
         public MandatoryOption? Mandatory { get; set; }
 
         /// <summary>
-        /// Gets or stets the release type for this version. Optional.
+        /// Gets or sets the release type for this version. Optional.
         /// Default is Beta.
         /// </summary>
         public ReleaseType? ReleaseType { get; set; }
