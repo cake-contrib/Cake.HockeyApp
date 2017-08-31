@@ -1,7 +1,8 @@
 Task("HockeyApp-Creates-New-Version")
-    .IsDependentOn("Create-New-Apk-Version")
-    .IsDependentOn("Create-New-Ipa-Version");
+    .IsDependentOn("Create-New-Apk-Version");
 
 Task("HockeyApp-Upload")
-    .IsDependentOn("Upload-Apk")
-    .IsDependentOn("Upload-Ipa");
+    .IsDependentOn("Upload-Apk");
+
+Task("Upload-With-Upload-Url")
+    .IsDependentOn("Upload-Apk-With-Upload-Url");

@@ -33,3 +33,20 @@ Task("Upload-Apk")
 
         var result = UploadToHockeyApp(Resources.ApkPath, HockeyAppSettings.Settings);
     });
+
+Task("Upload-Apk-With-Upload-Url")
+    .Does(() =>
+    {
+        HockeyAppSettings.WithSettings(Context, settings =>
+        {
+            settings.ApiBaseUrl = "https://upload.hockeyapp.net";
+            settings.AppId = EnvironmentVariable("HOCKEY_APP_APK_ID");
+        });
+                
+        Assert.NotNull(HockeyAppSettings.AppId);
+
+        Information("Api Token: {0}", string.IsNullOrEmpty(HockeyAppSettings.ApiToken));
+        Information("App Version: {0}:", HockeyAppSettings.Version);
+
+        var result = UploadToHockeyApp(Resources.ApkPath, HockeyAppSettings.Settings);
+    });

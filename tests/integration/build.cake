@@ -32,7 +32,8 @@ Teardown(ctx =>
 
 Task("Cake.HockeyApp")
     .IsDependentOn("HockeyApp-Creates-New-Version")
-    .IsDependentOn("HockeyApp-Upload");
+    .IsDependentOn("HockeyApp-Upload")
+    .IsDependentOn("Upload-With-Upload-Url");
 
 Task("Run-All-Tests")
     .IsDependentOn("Cake.HockeyApp");
