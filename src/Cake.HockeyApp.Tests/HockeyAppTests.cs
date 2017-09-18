@@ -5,7 +5,6 @@
     using Core;
     using Core.Diagnostics;
     using Core.IO;
-    using FakeItEasy;
     using Xunit;
 
     public class HockeyAppTests

@@ -4,25 +4,23 @@
     <TargetFramework>netcoreapp1.0</TargetFramework>
     <AssemblyName>Cake.HockeyApp.Tests</AssemblyName>
     <PackageId>Cake.HockeyApp.Tests</PackageId>
-    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <RuntimeFrameworkVersion>1.0.4</RuntimeFrameworkVersion>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <PackageTargetFallback>$(PackageTargetFallback);portable-win+net45+wp8+win81+wpa8</PackageTargetFallback>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.16.2" />
-    <PackageReference Include="FakeItEasy" Version="3.3.2" />
+    <PackageReference Include="Cake.Core" Version="0.22.2" />
     <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="15.0.0" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Cake.HockeyApp\Cake.HockeyApp.csproj" />
+    <ProjectReference Include="..\Cake.HockeyApp\Cake.HockeyApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
-
 </Project>
