@@ -15,9 +15,9 @@
     <repository type="GitHub" url="https://github.com/cake-contrib/Cake.HockeyApp" />
   </metadata>
   <files>
-    <file src="net45\Cake.HockeyApp.dll" target="lib/net45" />
-    <file src="net45\Cake.HockeyApp.xml" target="lib/net45" />
-    <file src="net45\Newtonsoft.Json.dll" target="lib/net45" />
+    <file src="net46\Cake.HockeyApp.dll" target="lib/net46" />
+    <file src="net46\Cake.HockeyApp.xml" target="lib/net46" />
+    <file src="net46\Newtonsoft.Json.dll" target="lib/net46" />
     <file src="netstandard1.6\Cake.HockeyApp.dll" target="lib/netstandard1.6" />
     <file src="netstandard1.6\Cake.HockeyApp.xml" target="lib/netstandard1.6" />
   </files>
