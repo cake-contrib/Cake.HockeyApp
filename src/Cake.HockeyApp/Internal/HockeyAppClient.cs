@@ -1,22 +1,20 @@
 namespace Cake.HockeyApp.Internal
 {
     using System;
+    using System.Threading.Tasks;
     using Core.Diagnostics;
     using Core.IO;
-    using System.Threading.Tasks;
 
     internal class HockeyAppClient
     {
-        private const string HockeyAppBaseUrl = "https://rink.hockeyapp.net";
-
         private readonly HockeyAppApiClient _client;
         private readonly ICakeLog _log;
 
-        public HockeyAppClient(ICakeLog log)
+        public HockeyAppClient(ICakeLog log, HockeyAppUploadSettings settings)
         {
             _log = log;
-            _client = new HockeyAppApiClient(HockeyAppBaseUrl);
-            _log.Verbose("Initialized HockeyApp Api at {0}", HockeyAppBaseUrl);
+            _client = new HockeyAppApiClient(settings.ApiBaseUrl);
+            _log.Verbose("Initialized HockeyApp Api at {0}", settings.ApiBaseUrl);
         }
 
         public async Task<HockeyAppUploadResult> UploadFile(FilePath file, FilePath symbolFile,
@@ -54,7 +52,7 @@ namespace Cake.HockeyApp.Internal
         }
 
         /// <summary>
-        /// Uploads file & symbols to an existing version.
+        /// Uploads file and symbols to an existing version.
         /// </summary>
         internal async Task<HockeyAppUploadResult> UploadToVersion(FilePath file, FilePath symbolFile, HockeyAppUploadSettings settings, string versionId)
         {
@@ -84,7 +82,7 @@ namespace Cake.HockeyApp.Internal
         }
 
         /// <summary>
-        /// Uploads file & symbols to autodetect endpoint.
+        /// Uploads file and symbols to autodetect endpoint.
         /// </summary>
         internal async Task<HockeyAppUploadResult> Upload(FilePath file, FilePath symbolFile, HockeyAppUploadSettings settings)
         {

@@ -40,7 +40,7 @@
     /// <para>
     /// Unfortunately, HockeyApp currently does only support metadata discovering for Android, iOS and macOS packages.
     /// Therefore you have to specify a version AND app id your self. This means that you have to create the app once
-    /// before uploading. <see cref="http://rink.hockeyapp.net/manage/apps/new">Create new App</see>. Creating a new
+    /// before uploading. <see href="http://rink.hockeyapp.net/manage/apps/new">Create new App</see>. Creating a new
     /// version is automatically done by this addin.
     /// </para>
     /// <code>
@@ -159,7 +159,7 @@
         {
             settings = settings ?? new HockeyAppUploadSettings();
 
-            var uploader = new HockeyAppClient(context.Log);
+            var uploader = new HockeyAppClient(context.Log, settings);
 
             settings.ApiToken = settings.ApiToken ??
                                 context.Environment.GetEnvironmentVariable(TokenVariable);
