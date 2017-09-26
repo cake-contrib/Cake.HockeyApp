@@ -18,6 +18,7 @@
     <file src="net46\Cake.HockeyApp.dll" target="lib/net46" />
     <file src="net46\Cake.HockeyApp.xml" target="lib/net46" />
     <file src="net46\Newtonsoft.Json.dll" target="lib/net46" />
+    <file src="net46\System.Net.Http.dll" target="lib/net46" />
     <file src="netstandard1.6\Cake.HockeyApp.dll" target="lib/netstandard1.6" />
     <file src="netstandard1.6\Cake.HockeyApp.pdb" target="lib/netstandard1.6" />
     <file src="netstandard1.6\Cake.HockeyApp.xml" target="lib/netstandard1.6" />
