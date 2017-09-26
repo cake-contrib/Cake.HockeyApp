@@ -1,5 +1,7 @@
+using Cake.HockeyApp;
+
 Task("Create-New-Apk-Version")
-    .Does(() =>
+    .Does((context) =>
     {
         HockeyAppSettings.WithSettings(Context, settings =>
         {
@@ -14,7 +16,7 @@ Task("Create-New-Apk-Version")
         
         Assert.NotNull(HockeyAppSettings.AppId);
 
-        var result = UploadToHockeyApp(Resources.ApkPath, HockeyAppSettings.Settings);
+        var result = context.UploadToHockeyApp(Resources.ApkPath, HockeyAppSettings.Settings);
     });
 
 Task("Upload-Apk")

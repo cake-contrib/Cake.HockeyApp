@@ -1,3 +1,5 @@
+using Cake.HockeyApp;
+
 Task("Create-New-Ipa-Version")
     .Does(() =>
     {
