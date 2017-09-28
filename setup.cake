@@ -9,13 +9,16 @@ BuildParameters.SetParameters(context: Context,
                             repositoryOwner: "cake-contrib",
                             repositoryName: "Cake.HockeyApp",
                             appVeyorAccountName: "cakecontrib",
-                            shouldRunDupFinder: false);
+                            shouldRunDupFinder: false,
+                            shouldRunInspectCode: false,
+                            integrationTestScriptPath: "./tests/integration/test.cake");
+
+BuildParameters.Tasks.AppVeyorTask.IsDependentOn("Run-Integration-Tests");
 
 BuildParameters.PrintParameters(Context);
 
 ToolSettings.SetToolSettings(context: Context,
-                            dupFinderExcludePattern: new string[] {
-                                BuildParameters.RootDirectoryPath + "/src/Cake.HockeyApp.Tests/*.cs" },
+                            dupFinderExcludePattern: new string[] { BuildParameters.RootDirectoryPath + "/src/Cake.HockeyApp.Tests/*.cs" },
                             testCoverageFilter: "+[*]* -[xunit.*]* -[Cake.Core]* -[Cake.Testing]* -[*.Tests]* -[FakeItEasy]*",
                             testCoverageExcludeByAttribute: "*.ExcludeFromCodeCoverage*",
                             testCoverageExcludeByFile: "*/*Designer.cs;*/*.g.cs;*/*.g.i.cs");
