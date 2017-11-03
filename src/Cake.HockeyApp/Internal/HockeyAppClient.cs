@@ -33,7 +33,10 @@ namespace Cake.HockeyApp.Internal
 
             var versionId = await CreateNewVersionAsync(settings);
 
-            return await UploadToVersion(file, symbolFile, settings, versionId);
+            var res = await UploadToVersion(file, symbolFile, settings, versionId);
+            res.VersionId = versionId;
+
+            return res;
         }
 
         public async Task<HockeyAppUploadResult> UploadFileToVersion(FilePath file, FilePath symbolFile,

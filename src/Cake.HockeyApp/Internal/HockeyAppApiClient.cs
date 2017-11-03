@@ -68,7 +68,7 @@
             if (!string.IsNullOrEmpty(symbolPath))
             {
                 dsymStream = File.OpenRead(symbolPath);
-                request.Add(new StreamContent(dsymStream), "dsym", Path.GetFileName(filePath));
+                request.Add(new StreamContent(dsymStream), "dsym", Path.GetFileName(symbolPath));
             }
 
             var httpResponse = await _restClient.PutAsync($"/api/2/apps/{appId}/app_versions/{version}", request);
@@ -115,7 +115,6 @@
             {
                 dsymStream = File.OpenRead(symbolPath);
                 request.AddIfNotEmpty("dsym", Path.GetFileName(symbolPath), dsymStream);
-
             }
 
             var httpResponse = await _restClient.PostAsync("/api/2/apps/upload", request);

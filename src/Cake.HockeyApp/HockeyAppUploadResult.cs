@@ -24,5 +24,10 @@
         /// Public url to download this package.
         /// </summary>
         public string PublicUrl { get; set; }
+
+        /// <summary>
+        /// Internal HockeyApp version id
+        /// </summary>
+        public string VersionId { get; set; }
     }
 }
