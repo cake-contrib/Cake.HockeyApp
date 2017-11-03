@@ -178,5 +178,55 @@
                 throw new Exception("Upload to Hockey App failed.");
             }
         }
+
+        /// <summary>
+        /// Update the attributes of an existing version.
+        /// Version property of <see cref="Cake.HockeyApp.HockeyAppUploadSettings" />
+        /// </summary>
+        /// <param name="context">The Cake context</param>
+        /// <param name="file">The app package.</param>
+        /// <param name="symbolsFile">The symbols for the app package.</param>
+        /// <param name="settings">The upload settings</param>
+        /// <param name="versionId">Must be replaced by the internal ID of the version which is returned in the Upload Version response JSON in the key "id".
+        /// <see cref="https://support.hockeyapp.net/kb/api/api-versions#update-version"/>
+        /// </param>
+        /// <example>
+        /// <code>
+        /// UploadToHockeyApp( pathToYourPackageFile, pathToSymbolsFile, new HockeyAppUploadSettings
+        /// {
+        ///     AppId = appIdFromHockeyApp,
+        ///     Version = "1.0.160901.1",
+        ///     ShortVersion = "1.0-beta2",
+        ///     Notes = "Uploaded via continuous integration."
+        /// });
+        /// </code>
+        /// Do not checkin the HockeyApp API Token into your source control.
+        /// Either use HockeyAppUploadSettings.ApiToken or the HOCKEYAPP_API_TOKEN environment variable.
+        /// </example>
+        [CakeAliasCategory("Deployment")]
+        [CakeMethodAlias]
+        public static HockeyAppUploadResult UpdateVersionHockeyApp(this ICakeContext context, FilePath file, FilePath symbolsFile, HockeyAppUploadSettings settings, string versionId)
+        {
+            settings = settings ?? new HockeyAppUploadSettings();
+
+            var uploader = new HockeyAppClient(context.Log, settings);
+
+            settings.ApiToken = settings.ApiToken ??
+                                context.Environment.GetEnvironmentVariable(TokenVariable);
+
+            try
+            {
+                var upload = uploader.UploadFileToVersion(file, symbolsFile, settings, versionId);
+                upload.Wait();
+
+                return upload.Result;
+            }
+            catch (Exception e)
+            {
+                do context.Log.Error(e.Message); while ((e = e.InnerException) != null);
+
+                throw new Exception("Upload to Hockey App failed.");
+            }
+        }
     }
 }

@@ -59,8 +59,11 @@
             request.AddIfNotEmpty("build_server_url", buildServerUrl);
             request.AddIfNotEmpty("repository_url", repositoryUrl);
 
-            appStream = File.OpenRead(filePath);
-            request.Add(new StreamContent(appStream), "ipa", Path.GetFileName(filePath));
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                appStream = File.OpenRead(filePath);
+                request.Add(new StreamContent(appStream), "ipa", Path.GetFileName(filePath));
+            }
 
             if (!string.IsNullOrEmpty(symbolPath))
             {
