@@ -60,12 +60,12 @@
             request.AddIfNotEmpty("repository_url", repositoryUrl);
 
             appStream = File.OpenRead(filePath);
-            request.Add(new StreamContent(appStream), "ipa", Path.GetFileName(filePath));
+            request.AddIfNotEmpty("ipa", Path.GetFileName(filePath), appStream);
 
             if (!string.IsNullOrEmpty(symbolPath))
             {
                 dsymStream = File.OpenRead(symbolPath);
-                request.Add(new StreamContent(dsymStream), "dsym", Path.GetFileName(filePath));
+                request.AddIfNotEmpty("dsym", Path.GetFileName(symbolPath), dsymStream);
             }
 
             var httpResponse = await _restClient.PutAsync($"/api/2/apps/{appId}/app_versions/{version}", request);
