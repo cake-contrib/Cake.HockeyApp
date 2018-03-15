@@ -112,7 +112,6 @@
             {
                 dsymStream = File.OpenRead(symbolPath);
                 request.AddIfNotEmpty("dsym", Path.GetFileName(symbolPath), dsymStream);
-
             }
 
             var httpResponse = await _restClient.PostAsync("/api/2/apps/upload", request);
