@@ -1,5 +1,7 @@
 #addin "nuget:https://www.myget.org/F/cake-contrib/api/v2?package=Cake.HockeyApp&prerelease"
 
+using Cake.HockeyApp;
+
 public static class HockeyAppSettings
 {
     public static HockeyAppUploadSettings Settings { get; private set; }

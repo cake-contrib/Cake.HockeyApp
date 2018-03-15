@@ -33,6 +33,34 @@ namespace Cake.HockeyApp.Internal
 
             var versionId = await CreateNewVersionAsync(settings);
 
+            var res = await UploadToVersion(file, symbolFile, settings, versionId);
+            res.VersionId = versionId;
+
+            return res;
+        }
+
+        public async Task<HockeyAppUploadResult> UploadFileToVersion(FilePath file, FilePath symbolFile,
+            HockeyAppUploadSettings settings, string versionId)
+        {
+            if (string.IsNullOrEmpty(settings.ApiToken))
+                throw new ArgumentNullException("settings.ApiToken",
+                    $"You have to either specify an ApiToken or define the {HockeyAppAliases.TokenVariable} environment variable.");
+
+            if (string.IsNullOrEmpty(settings.AppId))
+            {
+                throw new ArgumentNullException("settings.AppId",
+                    $"You have to specify an settings.AppId");
+            }
+
+            if (string.IsNullOrEmpty(versionId))
+            {
+                throw new ArgumentNullException("versionId",
+                    $"You have to specify an versionId");
+            }
+
+            _log.Information("Uploading file to HockeyApp. This can take several minutes....");
+            
+
             return await UploadToVersion(file, symbolFile, settings, versionId);
         }
 
@@ -56,7 +84,7 @@ namespace Cake.HockeyApp.Internal
         /// </summary>
         internal async Task<HockeyAppUploadResult> UploadToVersion(FilePath file, FilePath symbolFile, HockeyAppUploadSettings settings, string versionId)
         {
-            _log.Verbose($"Uploading file {file.FullPath} to {settings.ShortVersion} ({settings.Version}) for {settings.AppId}.");
+            _log.Verbose($"Uploading files: {file?.FullPath}, {symbolFile?.FullPath} to {settings.ShortVersion} ({settings.Version}) for {settings.AppId}.");
 
             var response = await _client.UploadFileToVersionAsync(settings.ApiToken, settings.AppId, versionId,
                     settings.Notes, ((int?)settings.NoteType).ToString(), ((int?)settings.Status).ToString(),

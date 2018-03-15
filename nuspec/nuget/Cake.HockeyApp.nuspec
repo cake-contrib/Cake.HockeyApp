@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/cake-contrib/Cake.HockeyApp</projectUrl>
     <iconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
     <description>HockeyApp Addin for Cake Build Automation System.</description>
-    <copyright>Copyright 2017 (c) Paul Reichelt and contributors</copyright>
+    <copyright>Copyright 2018 (c) Paul Reichelt and contributors</copyright>
     <tags>Cake Script Build HockeyApp Deployment</tags>
     <repository type="GitHub" url="https://github.com/cake-contrib/Cake.HockeyApp" />
   </metadata>
@@ -19,8 +19,8 @@
     <file src="net46\Cake.HockeyApp.xml" target="lib/net46" />
     <file src="net46\Newtonsoft.Json.dll" target="lib/net46" />
     <file src="net46\System.Net.Http.dll" target="lib/net46" />
-    <file src="netstandard1.6\Cake.HockeyApp.dll" target="lib/netstandard1.6" />
-    <file src="netstandard1.6\Cake.HockeyApp.pdb" target="lib/netstandard1.6" />
-    <file src="netstandard1.6\Cake.HockeyApp.xml" target="lib/netstandard1.6" />
+    <file src="netstandard2.0\Cake.HockeyApp.dll" target="lib/netstandard2.0" />
+    <file src="netstandard2.0\Cake.HockeyApp.pdb" target="lib/netstandard2.0" />
+    <file src="netstandard2.0\Cake.HockeyApp.xml" target="lib/netstandard2.0" />
   </files>
 </package>
