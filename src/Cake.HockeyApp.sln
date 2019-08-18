@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FDD918DF-906E-47AD-B5F1-136628D501B7}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
-		..\setup.cake = ..\setup.cake
+		..\recipe.cake = ..\recipe.cake
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.HockeyApp", "Cake.HockeyApp\Cake.HockeyApp.csproj", "{D0052ED8-402C-413A-A4B8-2D8D109CFDF2}"
