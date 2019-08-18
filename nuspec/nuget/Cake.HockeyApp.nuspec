@@ -6,13 +6,13 @@
     <authors>Paul Reichelt, Cake Contributors</authors>
     <owners>Paul Reichelt, Cake Contributors</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>https://raw.githubusercontent.com/cake-contrib/Cake.HockeyApp/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/cake-contrib/Cake.HockeyApp</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</iconUrl>
     <description>HockeyApp Addin for Cake Build Automation System.</description>
     <copyright>Copyright 2018 (c) Paul Reichelt and contributors</copyright>
     <tags>Cake Script Build HockeyApp Deployment</tags>
-    <repository type="GitHub" url="https://github.com/cake-contrib/Cake.HockeyApp.git" />
+    <license type="expression">MIT</license>
+    <repository type="git" url="https://github.com/cake-contrib/Cake.HockeyApp.git" />
   </metadata>
   <files>
     <file src="net46\Cake.HockeyApp.dll" target="lib/net46" />
