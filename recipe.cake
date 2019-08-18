@@ -11,7 +11,8 @@ BuildParameters.SetParameters(context: Context,
                             appVeyorAccountName: "cakecontrib",
                             shouldRunDupFinder: false,
                             shouldRunInspectCode: false,
-                            integrationTestScriptPath: "./tests/integration/test.cake");
+                            integrationTestScriptPath: "./tests/integration/test.cake",
+                            shouldRunGitVersion: true);
 
 BuildParameters.Tasks.AppVeyorTask.IsDependentOn("Run-Integration-Tests");
 
